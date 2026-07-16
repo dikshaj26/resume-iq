@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Local Environment Variables
+.env
+
+# Local User Uploads (parsed resumes)
+uploads/
+
+# OS metadata
+.DS_Store
+Thumbs.db

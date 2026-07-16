@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResumeIQ – AI Resume Analyzer & ATS Checker</title>
+  <meta name="description" content="Commercial-grade AI-powered ATS resume scanner, optimizer, cover letter builder, and mock interview prep platform.">
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- MAIN SPA WRAPPER -->
+  <div id="app-wrapper">
+    
+    <!-- 1. LANDING PAGE VIEW (Unauthenticated) -->
+    <div id="view-landing" class="view active">
+      <!-- Landing Header -->
+      <header class="landing-header">
+        <div class="landing-nav-container">
+          <div class="logo">
+            <span class="logo-icon"><i class="fa-solid fa-brain-circuit"></i></span>
+            <span class="logo-text">Resume<span class="accent-text">IQ</span></span>
+          </div>
+          <nav class="landing-nav">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+          <div class="auth-buttons">
+            <a href="#login" class="btn btn-secondary">Sign In</a>
+            <a href="#signup" class="btn btn-primary">Get Started</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="badge">ATS Score Accelerator</div>
+            <h1>Optimize Your Resume to Defeat the <span class="gradient-text">ATS Engine</span></h1>
+            <p>Upload your resume, get graded against target roles at specific companies, generate AI-optimized descriptions, audit social links, and simulate mock interviews with real-time feedback.</p>
+            <div class="cta-group">
+              <a href="#signup" class="btn btn-primary btn-lg">Analyze Resume Free <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="#how-it-works" class="btn btn-secondary btn-lg">Watch Demo</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-num">98.4%</span>
+                <span class="stat-lbl">ATS Success Rate</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">150K+</span>
+                <span class="stat-lbl">Resumes Analyzed</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">3x</span>
+                <span class="stat-lbl">More Interview Invites</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-illustration">
+            <div class="glass-illustration-card">
+              <div class="card-header-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="illustration-body">
+                <div class="score-circle-container">
+                  <div class="score-circle-wrapper">
+                    <svg class="progress-ring" width="160" height="160">
+                      <circle class="progress-ring-circle-bg" stroke="rgba(255,255,255,0.05)" stroke-width="12" fill="transparent" r="70" cx="80" cy="80"/>
+                      <circle class="progress-ring-circle" stroke="var(--primary)" stroke-width="12" stroke-dasharray="440" stroke-dashoffset="110" fill="transparent" r="70" cx="80" cy="80"/>
+                    </svg>
+                    <div class="score-number">85%</div>
+                  </div>
+                  <span class="score-label">Optimized Score</span>
+                </div>
+                <div class="audit-lines">
+                  <div class="audit-line"><span class="badge badge-success"><i class="fa-solid fa-check"></i> Found</span> JavaScript, Node.js, React</div>
+                  <div class="audit-line"><span class="badge badge-warning"><i class="fa-solid fa-triangle-exclamation"></i> Missing</span> Docker, Kubernetes</div>
+                  <div class="audit-line"><span class="badge badge-info"><i class="fa-solid fa-circle-nodes"></i> Company Fit</span> 91% Match at Google</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature Cards Section -->
+      <section id="features" class="features-section">
+        <div class="section-title">
+          <h2>Everything You Need to Succeed</h2>
+          <p>Features tailored to get you hired at top-tier organizations.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="icon-box"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <h3>Real-time ATS Scanning</h3>
+            <p>Score your resume formatting, keywords, experience depth, and readability against our proprietary parsing engine.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3>One-Click Optimizer</h3>
+            <p>Rewrite experience summaries and accomplishments with Google Gemini AI to conform to target job requirements.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-box"><i class="fa-solid fa-comments"></i></div>
+            <h3>AI Mock Interviews</h3>
+            <p>Generate behavioral and project questions based on your resume, type your answer, and receive graded AI critiques.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-box"><i class="fa-solid fa-share-nodes"></i></div>
+            <h3>Social Auditing</h3>
+            <p>Critique layout errors on LinkedIn profiles, GitHub READMEs, and portfolios to polish your online presence.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section id="how-it-works" class="how-section">
+        <div class="section-title">
+          <h2>Three Steps to Your Dream Job</h2>
+          <p>Start optimizing your professional identity in minutes.</p>
+        </div>
+        <div class="steps-flow">
+          <div class="step-card">
+            <span class="step-num">01</span>
+            <h3>Upload PDF Resume</h3>
+            <p>Drop your current resume. The parsing service automatically extracts structured data.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">02</span>
+            <h3>Run ATS & Job Audits</h3>
+            <p>Specify your target role and company. Optimize bullet points using one-click AI assistance.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">03</span>
+            <h3>Conduct Mock Interviews</h3>
+            <p>Prepare for recruiters with tailored questions, improving overall confidence.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="faq-section">
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <div class="faq-question">How does the ATS score work? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-answer">Our system runs local text heuristics mixed with semantic Gemini analysis to check if your resume meets keyword density, layout guidelines, and job criteria.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Will my uploaded resumes remain private? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-answer">Absolutely. We store resumes securely in database collections and restrict access only to the authenticated uploader.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Can I export my optimized resume? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-answer">Yes, our Resume Builder renders your optimized resume into an ATS-friendly A4 grid that you can directly print or export as PDF.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Banner -->
+      <section class="cta-banner">
+        <h2>Ready to land your next interview?</h2>
+        <p>Join thousands of software developers and professionals who bypassed filters.</p>
+        <a href="#signup" class="btn btn-primary btn-lg">Get Started Free</a>
+      </section>
+
+      <!-- Footer -->
+      <footer class="landing-footer">
+        <p>&copy; 2026 ResumeIQ. Designed for engineering success.</p>
+      </footer>
+    </div>
+
+    <!-- 2. AUTHENTICATION VIEWS -->
+    <div id="view-auth" class="view auth-page">
+      <div class="auth-box glass-card">
+        <div class="auth-logo">
+          <span class="logo-icon"><i class="fa-solid fa-brain-circuit"></i></span>
+          <span class="logo-text">Resume<span class="accent-text">IQ</span></span>
+        </div>
+        
+        <!-- Login Card -->
+        <div id="auth-login-card" class="auth-card active">
+          <h2>Welcome Back</h2>
+          <p>Enter your credentials to access your analyzer dashboard.</p>
+          <form id="form-login">
+            <div class="form-group">
+              <label for="login-email">Email Address</label>
+              <input type="email" id="login-email" required placeholder="name@company.com">
+            </div>
+            <div class="form-group">
+              <div class="label-wrapper">
+                <label for="login-password">Password</label>
+                <a href="#forgot" class="forgot-link">Forgot?</a>
+              </div>
+              <input type="password" id="login-password" required placeholder="••••••••">
+            </div>
+            <div class="form-row">
+              <label class="checkbox-container">
+                <input type="checkbox" id="login-remember">
+                <span class="checkmark"></span>
+                Remember Me
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          </form>
+          <p class="auth-footer">Don't have an account? <a href="#signup">Create Account</a></p>
+        </div>
+
+        <!-- Signup Card -->
+        <div id="auth-signup-card" class="auth-card">
+          <h2>Create Account</h2>
+          <p>Get started with ATS analysis and mock interviews.</p>
+          <form id="form-signup">
+            <div class="form-group">
+              <label for="signup-name">Full Name</label>
+              <input type="text" id="signup-name" required placeholder="Alex Mercer">
+            </div>
+            <div class="form-group">
+              <label for="signup-email">Email Address</label>
+              <input type="email" id="signup-email" required placeholder="alex@domain.com">
+            </div>
+            <div class="form-group">
+              <label for="signup-password">Password</label>
+              <input type="password" id="signup-password" required placeholder="At least 6 characters">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+          </form>
+          <p class="auth-footer">Already have an account? <a href="#login">Sign In</a></p>
+        </div>
+
+        <!-- Forgot Password Card -->
+        <div id="auth-forgot-card" class="auth-card">
+          <h2>Reset Password</h2>
+          <p>We'll send a password recovery link to your inbox.</p>
+          <form id="form-forgot">
+            <div class="form-group">
+              <label for="forgot-email">Email Address</label>
+              <input type="email" id="forgot-email" required placeholder="alex@domain.com">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send Reset Link</button>
+          </form>
+          <p class="auth-footer">Back to <a href="#login">Sign In</a></p>
+        </div>
+        
+        <!-- Reset Password Form Card (Mocked activation via login panel state) -->
+        <div id="auth-reset-card" class="auth-card">
+          <h2>Set New Password</h2>
+          <p>Configure a new secure password for your account.</p>
+          <form id="form-reset">
+            <div class="form-group">
+              <label for="reset-email">Verify Email</label>
+              <input type="email" id="reset-email" required placeholder="alex@domain.com">
+            </div>
+            <div class="form-group">
+              <label for="reset-password">New Password</label>
+              <input type="password" id="reset-password" required placeholder="At least 6 characters">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Update Password</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. MAIN DASHBOARD APPLICATION WRAPPER (Authenticated) -->
+    <div id="view-app" class="view app-layout">
+      <!-- SIDEBAR NAVIGATION -->
+      <aside class="app-sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <span class="logo-icon"><i class="fa-solid fa-brain-circuit"></i></span>
+            <span class="logo-text">Resume<span class="accent-text">IQ</span></span>
+          </div>
+        </div>
+        
+        <nav class="sidebar-menu">
+          <a href="#dashboard" class="nav-item active" data-tab="tab-dashboard">
+            <i class="fa-solid fa-chart-line"></i> Dashboard
+          </a>
+          <a href="#upload" class="nav-item" data-tab="tab-upload">
+            <i class="fa-solid fa-file-arrow-up"></i> Upload Resume
+          </a>
+          <a href="#analysis" class="nav-item hidden" id="nav-analysis" data-tab="tab-analysis">
+            <i class="fa-solid fa-magnifying-glass-chart"></i> Detailed Analysis
+          </a>
+          <a href="#builder" class="nav-item" data-tab="tab-builder">
+            <i class="fa-solid fa-pen-to-square"></i> Resume Builder
+          </a>
+          <a href="#job-match" class="nav-item" data-tab="tab-job-match">
+            <i class="fa-solid fa-code-compare"></i> Job Match
+          </a>
+          <a href="#social-audit" class="nav-item" data-tab="tab-social-audit">
+            <i class="fa-solid fa-share-nodes"></i> Social Auditor
+          </a>
+          <a href="#mock-interview" class="nav-item" data-tab="tab-mock-interview">
+            <i class="fa-solid fa-comments"></i> Mock Interview
+          </a>
+          <a href="#history" class="nav-item" data-tab="tab-history">
+            <i class="fa-solid fa-clock-rotate-left"></i> Version History
+          </a>
+          <a href="#settings" class="nav-item" data-tab="tab-settings">
+            <i class="fa-solid fa-gears"></i> Settings
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-block">
+            <div class="user-avatar" id="sidebar-user-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="user-info">
+              <span class="user-name" id="sidebar-user-name">Loading...</span>
+              <span class="user-email" id="sidebar-user-email">email@domain.com</span>
+            </div>
+          </div>
+          <button id="btn-logout" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </div>
+      </aside>
+
+      <!-- CONTENT FRAME -->
+      <main class="app-content">
+        <!-- TOP HEADER -->
+        <header class="app-header">
+          <div class="header-left">
+            <h2 id="current-view-title">Dashboard</h2>
+          </div>
+          <div class="header-right">
+            <!-- Theme Toggle Switch -->
+            <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            
+            <div class="dropdown">
+              <button class="profile-dropdown-btn" id="profileDropdownTrigger">
+                <span class="user-name-abbr" id="header-user-initials">UN</span>
+              </button>
+              <div class="dropdown-content" id="profileDropdownMenu">
+                <a href="#settings"><i class="fa-solid fa-user-gear"></i> Profile settings</a>
+                <a href="#logout" id="logout-dropdown"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- DASHBOARD BODY WITH TAB CONTROLS -->
+        <div class="app-body">
+          
+          <!-- TAB 1: DASHBOARD -->
+          <div id="tab-dashboard" class="tab-pane active">
+            <!-- Welcome Banner -->
+            <div class="welcome-card card-gradient">
+              <div class="welcome-text">
+                <h2>Welcome back, <span id="dash-user-name">User</span>!</h2>
+                <p>Upload a new resume or analyze existing versions targeting specific job profiles at top companies.</p>
+              </div>
+              <div class="welcome-action">
+                <a href="#upload" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New ATS Analysis</a>
+              </div>
+            </div>
+
+            <!-- Stats Overview Cards -->
+            <div class="dashboard-stats-grid">
+              <!-- Score Circle Card -->
+              <div class="dashboard-card glass-card">
+                <h3>Latest ATS Score</h3>
+                <div class="score-summary-block">
+                  <div class="score-circle-wrapper">
+                    <svg class="progress-ring" width="120" height="120">
+                      <circle class="progress-ring-circle-bg" stroke="rgba(255,255,255,0.05)" stroke-width="8" fill="transparent" r="50" cx="60" cy="60"/>
+                      <circle class="progress-ring-circle" id="dash-score-ring" stroke="var(--primary)" stroke-width="8" stroke-dasharray="314" stroke-dashoffset="314" fill="transparent" r="50" cx="60" cy="60"/>
+                    </svg>
+                    <div class="score-number small" id="dash-ats-score">0%</div>
+                  </div>
+                  <div class="score-meta">
+                    <h4 id="dash-resume-name">No Resume Uploaded</h4>
+                    <p id="dash-resume-role">Upload a PDF to scan</p>
+                    <div class="badge badge-success hidden" id="dash-resume-company-badge">Google</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Radar Competencies Card -->
+              <div class="dashboard-card glass-card">
+                <h3>Skill Competency Metrics</h3>
+                <div class="chart-container-radar">
+                  <canvas id="chart-competency"></canvas>
+                </div>
+              </div>
+
+              <!-- Score Trend Card -->
+              <div class="dashboard-card glass-card">
+                <h3>ATS Score Progression</h3>
+                <div class="chart-container-line">
+                  <canvas id="chart-trends"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Actions & Timeline Grid -->
+            <div class="dashboard-details-grid">
+              <!-- Recent Resume Versions -->
+              <div class="dashboard-card glass-card flex-2">
+                <div class="card-header-row">
+                  <h3>Recent Resumes</h3>
+                  <a href="#history" class="view-all-link">View All</a>
+                </div>
+                <div class="table-container">
+                  <table class="dashboard-table">
+                    <thead>
+                      <tr>
+                        <th>Resume Name</th>
+                        <th>Target Role</th>
+                        <th>Target Company</th>
+                        <th>ATS Score</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="dash-resumes-tbody">
+                      <tr>
+                        <td colspan="5" class="empty-state-row">No resumes uploaded yet. Go to Upload.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Activity Timeline -->
+              <div class="dashboard-card glass-card flex-1">
+                <h3>Activity Log</h3>
+                <div class="activity-timeline" id="dash-activity-timeline">
+                  <div class="timeline-item">
+                    <span class="timeline-icon"><i class="fa-solid fa-user-plus"></i></span>
+                    <div class="timeline-content">
+                      <h4>Account Created</h4>
+                      <p>Successfully created ResumeIQ credentials.</p>
+                      <span class="timeline-time">Just now</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: UPLOAD RESUME -->
+          <div id="tab-upload" class="tab-pane">
+            <div class="dashboard-card glass-card max-width-container">
+              <h2>Upload Resume</h2>
+              <p>Analyze your formatting, keyword density, and skills relevance against advanced ATS parsers.</p>
+              
+              <form id="form-upload-resume">
+                <!-- Role and Company Targeting Details -->
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="upload-role">Target Job Role</label>
+                    <select id="upload-role" class="form-select">
+                      <option value="Software Engineer" selected>Software Engineer</option>
+                      <option value="Frontend Developer">Frontend Developer</option>
+                      <option value="Backend Developer">Backend Developer</option>
+                      <option value="Full Stack Architect">Full Stack Architect</option>
+                      <option value="Data Scientist">Data Scientist</option>
+                      <option value="Product Manager">Product Manager</option>
+                      <option value="UX/UI Designer">UX/UI Designer</option>
+                      <option value="DevOps Engineer">DevOps Engineer</option>
+                      <option value="Other">Custom Role...</option>
+                    </select>
+                    <input type="text" id="upload-custom-role" class="form-input hidden" placeholder="Enter Custom Role...">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="upload-company">Target Company</label>
+                    <select id="upload-company" class="form-select">
+                      <option value="Any" selected>Any (Standard ATS)</option>
+                      <option value="Google">Google</option>
+                      <option value="Microsoft">Microsoft</option>
+                      <option value="Amazon">Amazon</option>
+                      <option value="Deloitte">Deloitte</option>
+                      <option value="Accenture">Accenture</option>
+                      <option value="TCS">TCS</option>
+                      <option value="Infosys">Infosys</option>
+                      <option value="Wipro">Wipro</option>
+                      <option value="Custom">Custom Company...</option>
+                    </select>
+                    <input type="text" id="upload-custom-company" class="form-input hidden" placeholder="Enter Custom Company...">
+                  </div>
+                </div>
+
+                <!-- Drag and Drop Box -->
+                <div class="drag-drop-zone" id="drop-zone">
+                  <div class="drop-zone-content">
+                    <i class="fa-solid fa-file-pdf upload-icon"></i>
+                    <h3>Drag & Drop PDF Resume here</h3>
+                    <p>or click to browse files</p>
+                    <span class="file-limits">PDF format only (Max 5MB)</span>
+                  </div>
+                  <input type="file" id="file-input" class="hidden" accept="application/pdf">
+                </div>
+
+                <!-- File Preview / Progress indicator -->
+                <div id="upload-preview-container" class="upload-preview hidden">
+                  <div class="preview-file-details">
+                    <span class="file-name" id="preview-file-name">filename.pdf</span>
+                    <span class="file-size" id="preview-file-size">0 KB</span>
+                    <button type="button" id="btn-remove-file" class="btn-icon text-danger" title="Remove File"><i class="fa-solid fa-trash"></i></button>
+                  </div>
+                  <!-- Progress Bar -->
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" id="upload-progress-bar"></div>
+                  </div>
+                </div>
+
+                <div class="form-action-row">
+                  <button type="submit" class="btn btn-primary btn-lg" id="btn-submit-upload" disabled>
+                    <i class="fa-solid fa-magnifying-glass-chart"></i> Start ATS Audit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- TAB 3: DETAILED ANALYSIS -->
+          <div id="tab-analysis" class="tab-pane">
+            <div class="analysis-results-wrapper">
+              
+              <!-- Left Sidebar: Overview & Core Scores -->
+              <div class="analysis-sidebar">
+                <div class="dashboard-card glass-card text-center relative-pos">
+                  <div class="report-badge" id="report-target-meta">Google | Software Engineer</div>
+                  <h3>Overall ATS Score</h3>
+                  
+                  <div class="score-circle-wrapper margin-y-lg">
+                    <svg class="progress-ring" width="160" height="160">
+                      <circle class="progress-ring-circle-bg" stroke="rgba(255,255,255,0.05)" stroke-width="12" fill="transparent" r="70" cx="80" cy="80"/>
+                      <circle class="progress-ring-circle" id="report-overall-ring" stroke="var(--primary)" stroke-width="12" stroke-dasharray="440" stroke-dashoffset="440" fill="transparent" r="70" cx="80" cy="80"/>
+                    </svg>
+                    <div class="score-number" id="report-overall-score">0%</div>
+                  </div>
+                  
+                  <div class="report-actions-row">
+                    <button class="btn btn-secondary btn-sm" id="btn-print-report"><i class="fa-solid fa-print"></i> Print</button>
+                    <button class="btn btn-secondary btn-sm" id="btn-copy-report-share"><i class="fa-solid fa-copy"></i> Copy Link</button>
+                  </div>
+                </div>
+
+                <!-- ATS Heuristic Progress Bars -->
+                <div class="dashboard-card glass-card">
+                  <h3>Scoring Breakdown</h3>
+                  <div class="breakdown-list">
+                    <div class="progress-group">
+                      <div class="progress-label-row"><span>Formatting</span> <span id="score-formatting">0%</span></div>
+                      <div class="progress-bar-container"><div class="progress-bar" id="bar-formatting"></div></div>
+                    </div>
+                    <div class="progress-group">
+                      <div class="progress-label-row"><span>Skills Matching</span> <span id="score-skills">0%</span></div>
+                      <div class="progress-bar-container"><div class="progress-bar" id="bar-skills"></div></div>
+                    </div>
+                    <div class="progress-group">
+                      <div class="progress-label-row"><span>Experience Depth</span> <span id="score-experience">0%</span></div>
+                      <div class="progress-bar-container"><div class="progress-bar" id="bar-experience"></div></div>
+                    </div>
+                    <div class="progress-group">
+                      <div class="progress-label-row"><span>Education Alignment</span> <span id="score-education">0%</span></div>
+                      <div class="progress-bar-container"><div class="progress-bar" id="bar-education"></div></div>
+                    </div>
+                    <div class="progress-group">
+                      <div class="progress-label-row"><span>Keyword Density</span> <span id="score-keyword">0%</span></div>
+                      <div class="progress-bar-container"><div class="progress-bar" id="bar-keyword"></div></div>
+                    </div>
+                    <div class="progress-group">
+                      <div class="progress-label-row"><span>Readability Grade</span> <span id="score-readability">0%</span></div>
+                      <div class="progress-bar-container"><div class="progress-bar" id="bar-readability"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Detailed AI Cards and Tabs -->
+              <div class="analysis-body-sections">
+                <!-- Navigation Tabs inside analysis -->
+                <div class="tabs-sub-nav">
+                  <button class="sub-tab-btn active" data-subtab="subtab-overview">Overview & Feedback</button>
+                  <button class="sub-tab-btn" data-subtab="subtab-skills">Keywords & Skills</button>
+                  <button class="sub-tab-btn" data-subtab="subtab-structure">Layout & Projects</button>
+                  <button class="sub-tab-btn" data-subtab="subtab-career">Suggestions & Career</button>
+                </div>
+
+                <!-- SUB-TAB 1: Overview -->
+                <div id="subtab-overview" class="subtab-pane active">
+                  <div class="dashboard-card glass-card">
+                    <h3>Professional Summary Synthesis</h3>
+                    <p id="report-summary" class="summary-paragraph">Analyzing details...</p>
+                  </div>
+
+                  <div class="dashboard-card glass-card">
+                    <h3>ATS Parsing Verdict</h3>
+                    <p id="report-ats-verdict">Analyzing details...</p>
+                  </div>
+
+                  <div class="strengths-weaknesses-grid">
+                    <div class="dashboard-card glass-card border-success-subtle">
+                      <h3 class="text-success"><i class="fa-solid fa-circle-check"></i> Key Strengths</h3>
+                      <ul class="bullet-list-custom" id="report-strengths-ul">
+                        <li>Analyzing details...</li>
+                      </ul>
+                    </div>
+                    <div class="dashboard-card glass-card border-danger-subtle">
+                      <h3 class="text-danger"><i class="fa-solid fa-circle-xmark"></i> Critical Gaps</h3>
+                      <ul class="bullet-list-custom" id="report-weaknesses-ul">
+                        <li>Analyzing details...</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SUB-TAB 2: Keywords & Skills -->
+                <div id="subtab-skills" class="subtab-pane">
+                  <div class="dashboard-card glass-card">
+                    <h3>Keywords Distribution</h3>
+                    <div class="skills-comparison-block">
+                      <div class="skills-block">
+                        <h4>Matched Keywords</h4>
+                        <div class="tag-container" id="report-matched-keywords">
+                          <!-- Filled via JS -->
+                        </div>
+                      </div>
+                      <div class="skills-block">
+                        <h4>Missing Keywords (Add to Resume)</h4>
+                        <div class="tag-container" id="report-missing-keywords">
+                          <!-- Filled via JS -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dashboard-card glass-card">
+                    <h3>Technical & Soft Skills Check</h3>
+                    <div class="skills-comparison-block">
+                      <div class="skills-block">
+                        <h4>Matched Skills</h4>
+                        <div class="tag-container" id="report-matched-skills">
+                          <!-- Filled via JS -->
+                        </div>
+                      </div>
+                      <div class="skills-block">
+                        <h4>Missing Core Skills</h4>
+                        <div class="tag-container text-danger-tags" id="report-missing-skills">
+                          <!-- Filled via JS -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SUB-TAB 3: Layout & Projects -->
+                <div id="subtab-structure" class="subtab-pane">
+                  <div class="dashboard-card glass-card">
+                    <h3>Layout & Formatting Review</h3>
+                    <div class="review-block">
+                      <i class="fa-solid fa-crop-simple review-icon text-info"></i>
+                      <p id="report-formatting-review">Analyzing details...</p>
+                    </div>
+                  </div>
+
+                  <div class="dashboard-card glass-card">
+                    <h3>Grammar & Tone Check</h3>
+                    <div class="review-block">
+                      <i class="fa-solid fa-spell-check review-icon text-success"></i>
+                      <p id="report-grammar-review">Analyzing details...</p>
+                    </div>
+                  </div>
+
+                  <div class="dashboard-card glass-card">
+                    <h3>Project Technical Depth Analysis</h3>
+                    <div class="review-block">
+                      <i class="fa-solid fa-code-fork review-icon text-warning"></i>
+                      <p id="report-project-analysis">Analyzing details...</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SUB-TAB 4: Career Suggestions -->
+                <div id="subtab-career" class="subtab-pane">
+                  <div class="dashboard-card glass-card border-primary-subtle">
+                    <h3>Priority Improvements Checklist</h3>
+                    <ul class="checklist-custom" id="report-priority-checklist">
+                      <!-- Filled via JS -->
+                    </ul>
+                  </div>
+
+                  <div class="strengths-weaknesses-grid">
+                    <div class="dashboard-card glass-card">
+                      <h3>Suggested Certifications</h3>
+                      <ul class="bullet-list-custom" id="report-certifications-ul">
+                        <!-- Filled via JS -->
+                      </ul>
+                    </div>
+                    <div class="dashboard-card glass-card">
+                      <h3>Career Roadmap Advice</h3>
+                      <ul class="bullet-list-custom" id="report-career-ul">
+                        <!-- Filled via JS -->
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="dashboard-card glass-card action-optimizer-card text-center">
+                    <div class="sparkles-container"><i class="fa-solid fa-wand-magic-sparkles text-accent size-xl animate-pulse"></i></div>
+                    <h3>Optimize Resume Content Instantly</h3>
+                    <p>Apply our One-Click AI Optimizer to automatically correct missing keywords, adjust experience descriptions using metrics, and rewrite your professional summary.</p>
+                    <button class="btn btn-primary" id="btn-one-click-optimize"><i class="fa-solid fa-rocket"></i> Run One-Click AI Optimizer</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: RESUME BUILDER & TEMPLATES -->
+          <div id="tab-builder" class="tab-pane">
+            <div class="builder-columns-container">
+              <!-- Left Form Column -->
+              <div class="builder-form-panel glass-card">
+                <h3>Resume Content Editor</h3>
+                <p>Modify and preview your resume sections. Changes reflect instantly on the template canvas.</p>
+                
+                <form id="form-resume-builder">
+                  <!-- Section Accordion -->
+                  
+                  <!-- 1. Personal Info -->
+                  <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-address-card"></i> Contact Information</div>
+                    <div class="accordion-content active">
+                      <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="build-name" class="form-input">
+                      </div>
+                      <div class="form-row-2">
+                        <div class="form-group">
+                          <label>Email Address</label>
+                          <input type="email" id="build-email" class="form-input">
+                        </div>
+                        <div class="form-group">
+                          <label>Phone Number</label>
+                          <input type="text" id="build-phone" class="form-input">
+                        </div>
+                      </div>
+                      <div class="form-row-2">
+                        <div class="form-group">
+                          <label>Location</label>
+                          <input type="text" id="build-location" class="form-input">
+                        </div>
+                        <div class="form-group">
+                          <label>Website/Portfolio</label>
+                          <input type="text" id="build-website" class="form-input">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 2. Summary -->
+                  <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-align-left"></i> Summary</div>
+                    <div class="accordion-content">
+                      <div class="form-group">
+                        <label>Professional Profile Summary</label>
+                        <textarea id="build-summary" class="form-textarea" rows="4"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 3. Experience -->
+                  <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-briefcase"></i> Work Experience</div>
+                    <div class="accordion-content">
+                      <div id="builder-experience-list"></div>
+                      <button type="button" class="btn btn-secondary btn-sm" id="btn-add-experience"><i class="fa-solid fa-plus"></i> Add Experience</button>
+                    </div>
+                  </div>
+
+                  <!-- 4. Projects -->
+                  <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-folder-open"></i> Projects</div>
+                    <div class="accordion-content">
+                      <div id="builder-projects-list"></div>
+                      <button type="button" class="btn btn-secondary btn-sm" id="btn-add-project"><i class="fa-solid fa-plus"></i> Add Project</button>
+                    </div>
+                  </div>
+
+                  <!-- 5. Education -->
+                  <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+                    <div class="accordion-content">
+                      <div id="builder-education-list"></div>
+                      <button type="button" class="btn btn-secondary btn-sm" id="btn-add-education"><i class="fa-solid fa-plus"></i> Add Education</button>
+                    </div>
+                  </div>
+
+                  <!-- 6. Skills -->
+                  <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-list-check"></i> Skills</div>
+                    <div class="accordion-content">
+                      <div class="form-group">
+                        <label>Technical Skills (Comma separated)</label>
+                        <input type="text" id="build-skills-tech" class="form-input">
+                      </div>
+                      <div class="form-group">
+                        <label>Soft Skills (Comma separated)</label>
+                        <input type="text" id="build-skills-soft" class="form-input">
+                      </div>
+                      <div class="form-group">
+                        <label>Languages (Comma separated)</label>
+                        <input type="text" id="build-skills-languages" class="form-input">
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-block margin-y-md"><i class="fa-solid fa-floppy-disk"></i> Save Edited Version</button>
+                </form>
+              </div>
+
+              <!-- Right Canvas Column -->
+              <div class="builder-canvas-panel">
+                <!-- Canvas Control Bar -->
+                <div class="canvas-control-bar glass-card">
+                  <div class="template-selector">
+                    <label for="template-select">Template Style:</label>
+                    <select id="template-select" class="form-select select-sm">
+                      <option value="minimalist" selected>Minimalist Classic</option>
+                      <option value="executive">Modern Executive</option>
+                      <option value="tech">Creative Tech Grid</option>
+                    </select>
+                  </div>
+                  <button class="btn btn-primary btn-sm" id="btn-download-resume"><i class="fa-solid fa-file-pdf"></i> Export PDF</button>
+                </div>
+
+                <!-- Live A4 Resume Container -->
+                <div class="resume-a4-viewport">
+                  <div id="resume-canvas" class="resume-canvas template-minimalist">
+                    <!-- Dynamic resume content injected here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: JOB MATCH -->
+          <div id="tab-job-match" class="tab-pane">
+            <div class="job-match-layout">
+              <!-- Left Form inputs -->
+              <div class="dashboard-card glass-card flex-1">
+                <h3>Job Description Audit</h3>
+                <p>Paste the job post description details to run a keyword coverage and skill gap analysis.</p>
+                
+                <form id="form-job-match">
+                  <div class="form-group">
+                    <label for="match-resume-select">Select Analyzed Resume Version</label>
+                    <select id="match-resume-select" class="form-select" required>
+                      <!-- Loaded via JS -->
+                    </select>
+                  </div>
+                  <div class="form-row-2">
+                    <div class="form-group">
+                      <label for="match-job-title">Job Title</label>
+                      <input type="text" id="match-job-title" class="form-input" required placeholder="Senior Frontend Developer">
+                    </div>
+                    <div class="form-group">
+                      <label for="match-company">Company</label>
+                      <input type="text" id="match-company" class="form-input" placeholder="Netflix">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="match-jd-text">Paste Job Description</label>
+                    <textarea id="match-jd-text" class="form-textarea" required rows="10" placeholder="Copy paste the complete job posting text here..."></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-magnifying-glass-chart"></i> Compare Resume with JD</button>
+                </form>
+              </div>
+
+              <!-- Right Results Section -->
+              <div class="job-match-results flex-1" id="job-match-results-container">
+                <div class="dashboard-card glass-card text-center empty-state-card" id="match-empty-state">
+                  <i class="fa-solid fa-code-compare size-xl text-muted"></i>
+                  <h3>No Audit Run Yet</h3>
+                  <p>Select your resume version, paste a job description on the left, and submit to see comparison metrics.</p>
+                </div>
+
+                <div class="hidden" id="match-results-card">
+                  <div class="dashboard-card glass-card card-gradient text-center">
+                    <h3>JD Match Percentage</h3>
+                    <div class="score-circle-wrapper margin-y-md">
+                      <svg class="progress-ring" width="120" height="120">
+                        <circle class="progress-ring-circle-bg" stroke="rgba(255,255,255,0.05)" stroke-width="8" fill="transparent" r="50" cx="60" cy="60"/>
+                        <circle class="progress-ring-circle" id="match-score-ring" stroke="var(--accent)" stroke-width="8" stroke-dasharray="314" stroke-dashoffset="314" fill="transparent" r="50" cx="60" cy="60"/>
+                      </svg>
+                      <div class="score-number small" id="match-percentage-score">0%</div>
+                    </div>
+                    <h4 id="match-results-role-company">Software Engineer at Google</h4>
+                  </div>
+
+                  <div class="dashboard-card glass-card">
+                    <h3>Role Fit Analysis</h3>
+                    <p id="match-role-fit">Analyzing role fit...</p>
+                  </div>
+
+                  <div class="dashboard-card glass-card">
+                    <h3>Keyword Coverage Gaps</h3>
+                    <div class="skills-comparison-block">
+                      <div class="skills-block">
+                        <h4>Missing Job Keywords</h4>
+                        <div class="tag-container text-danger-tags" id="match-missing-keywords"></div>
+                      </div>
+                      <div class="skills-block">
+                        <h4>Missing Core Skills</h4>
+                        <div class="tag-container text-danger-tags" id="match-missing-skills"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dashboard-card glass-card">
+                    <h3>ATS Resume Adaptations</h3>
+                    <p id="match-ats-suggestions"></p>
+                  </div>
+
+                  <div class="dashboard-card glass-card border-primary-subtle">
+                    <h3>Learning Roadmap & Upskill Plan</h3>
+                    <p class="timeline-meta"><strong>Target Timeline:</strong> <span id="match-roadmap-timeline">4 weeks</span></p>
+                    <ul class="checklist-custom" id="match-roadmap-steps-ul"></ul>
+                  </div>
+
+                  <!-- Cover Letter Section inside Job Match -->
+                  <div class="dashboard-card glass-card border-accent-subtle">
+                    <h3>Generate AI Cover Letter</h3>
+                    <p>Generate a customized, professional cover letter mapping your resume accomplishments directly to this job description.</p>
+                    <div class="form-row-2 margin-y-sm">
+                      <div class="form-group">
+                        <label for="cover-letter-tone">Tone Style</label>
+                        <select id="cover-letter-tone" class="form-select select-sm">
+                          <option value="Professional" selected>Professional & Polished</option>
+                          <option value="Passionate">Energetic & Passionate</option>
+                          <option value="Confident">Bold & Confident</option>
+                          <option value="Conversational">Conversational & Friendly</option>
+                        </select>
+                      </div>
+                      <div class="form-group align-end">
+                        <button class="btn btn-accent btn-sm btn-block" id="btn-generate-cover-letter"><i class="fa-solid fa-signature"></i> Create Letter</button>
+                      </div>
+                    </div>
+                    <div class="cover-letter-output-box hidden" id="cover-letter-container">
+                      <textarea id="cover-letter-text" class="form-textarea" rows="12"></textarea>
+                      <button class="btn btn-secondary btn-sm margin-t-sm" id="btn-copy-cover-letter"><i class="fa-solid fa-copy"></i> Copy to Clipboard</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 6: SOCIAL AUDITOR -->
+          <div id="tab-social-audit" class="tab-pane">
+            <div class="social-audit-layout">
+              <!-- Left Form input -->
+              <div class="dashboard-card glass-card flex-1">
+                <h3>Social Portfolio Auditor</h3>
+                <p>Provide links to your public technical portfolios. Gemini reviews profile layout structures and highlights enhancements based on target roles.</p>
+                
+                <form id="form-social-audit">
+                  <div class="form-group">
+                    <label for="audit-report-select">Select Reference ATS Report</label>
+                    <select id="audit-report-select" class="form-select" required>
+                      <!-- Loaded via JS -->
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="audit-linkedin"><i class="fa-brands fa-linkedin text-info"></i> LinkedIn Profile URL</label>
+                    <input type="url" id="audit-linkedin" class="form-input" placeholder="https://linkedin.com/in/username">
+                  </div>
+                  <div class="form-group">
+                    <label for="audit-github"><i class="fa-brands fa-github text-muted"></i> GitHub Profile URL</label>
+                    <input type="url" id="audit-github" class="form-input" placeholder="https://github.com/username">
+                  </div>
+                  <div class="form-group">
+                    <label for="audit-portfolio"><i class="fa-solid fa-globe text-accent"></i> Portfolio Website URL</label>
+                    <input type="url" id="audit-portfolio" class="form-input" placeholder="https://myportfolio.dev">
+                  </div>
+                  <div class="form-group">
+                    <label for="audit-bio-text">Paste Profile Summary / Details (Optional)</label>
+                    <textarea id="audit-bio-text" class="form-textarea" rows="4" placeholder="Paste headline bio, readme text, or details to bypass public scraper limits."></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-shield-halved"></i> Run Social Audit</button>
+                </form>
+              </div>
+
+              <!-- Right Results section -->
+              <div class="social-audit-results flex-1">
+                <div class="dashboard-card glass-card text-center empty-state-card" id="social-empty-state">
+                  <i class="fa-solid fa-share-nodes size-xl text-muted"></i>
+                  <h3>No Audit Run Yet</h3>
+                  <p>Provide your social links on the left and submit to see critiques.</p>
+                </div>
+
+                <div class="hidden" id="social-results-cards">
+                  <!-- LinkedIn card -->
+                  <div class="dashboard-card glass-card">
+                    <div class="card-header-row">
+                      <h4><i class="fa-brands fa-linkedin text-info"></i> LinkedIn Review</h4>
+                      <span class="badge" id="badge-score-linkedin">0/100</span>
+                    </div>
+                    <p id="critique-linkedin" class="critique-text"></p>
+                    <ul class="bullet-list-custom" id="suggestions-linkedin"></ul>
+                  </div>
+
+                  <!-- GitHub card -->
+                  <div class="dashboard-card glass-card">
+                    <div class="card-header-row">
+                      <h4><i class="fa-brands fa-github"></i> GitHub Review</h4>
+                      <span class="badge" id="badge-score-github">0/100</span>
+                    </div>
+                    <p id="critique-github" class="critique-text"></p>
+                    <ul class="bullet-list-custom" id="suggestions-github"></ul>
+                  </div>
+
+                  <!-- Portfolio card -->
+                  <div class="dashboard-card glass-card">
+                    <div class="card-header-row">
+                      <h4><i class="fa-solid fa-globe text-accent"></i> Portfolio Review</h4>
+                      <span class="badge" id="badge-score-portfolio">0/100</span>
+                    </div>
+                    <p id="critique-portfolio" class="critique-text"></p>
+                    <ul class="bullet-list-custom" id="suggestions-portfolio"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 7: MOCK INTERVIEW -->
+          <div id="tab-mock-interview" class="tab-pane">
+            <div class="mock-interview-layout">
+              <!-- Sidebar configuration or history -->
+              <div class="interview-sidebar">
+                <div class="dashboard-card glass-card">
+                  <h3>New Simulation</h3>
+                  <form id="form-start-interview">
+                    <div class="form-group">
+                      <label for="interview-resume-select">Select Resume Version</label>
+                      <select id="interview-resume-select" class="form-select" required>
+                        <!-- Loaded via JS -->
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="interview-role">Target Role</label>
+                      <input type="text" id="interview-role" class="form-input" required placeholder="Frontend Developer">
+                    </div>
+                    <div class="form-group">
+                      <label for="interview-company">Target Company</label>
+                      <input type="text" id="interview-company" class="form-input" placeholder="Google">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-play"></i> Launch Interview</button>
+                  </form>
+                </div>
+
+                <div class="dashboard-card glass-card">
+                  <h3>Previous Sessions</h3>
+                  <div class="interview-history-list" id="interview-sessions-list">
+                    <p class="empty-state-text text-center">No interviews completed.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Main chat board -->
+              <div class="interview-main-panel">
+                <!-- Session Empty State -->
+                <div class="dashboard-card glass-card text-center empty-state-card" id="interview-empty-state">
+                  <i class="fa-solid fa-comments size-xl text-muted"></i>
+                  <h3>AI Mock Interview Simulator</h3>
+                  <p>Choose your resume and target details on the left, then click "Launch Interview" to begin a simulated question-by-question conversation with Gemini AI.</p>
+                </div>
+
+                <!-- Simulation Active Board -->
+                <div class="interview-board hidden" id="interview-active-board">
+                  <!-- Header status bar -->
+                  <div class="interview-status-bar glass-card">
+                    <div class="status-left">
+                      <span class="role-badge" id="interview-active-meta">Google | Software Engineer</span>
+                      <span class="question-tracker" id="interview-question-tracker">Question 1 of 5</span>
+                    </div>
+                    <div class="status-right">
+                      <span class="timer" id="interview-timer">00:00</span>
+                    </div>
+                  </div>
+
+                  <!-- Question card -->
+                  <div class="dashboard-card glass-card question-card border-primary-subtle" id="interview-question-box">
+                    <div class="category-badge badge-info" id="interview-question-category">Technical</div>
+                    <h3 id="interview-question-text">Walk me through your background and explain why you're interested in this role.</h3>
+                  </div>
+
+                  <!-- Response input card -->
+                  <div class="dashboard-card glass-card" id="interview-response-box">
+                    <form id="form-submit-answer">
+                      <div class="form-group">
+                        <label for="interview-user-answer">Your Answer</label>
+                        <textarea id="interview-user-answer" class="form-textarea" rows="6" required placeholder="Type your detailed professional answer here..."></textarea>
+                      </div>
+                      <div class="form-action-row">
+                        <button type="submit" class="btn btn-primary" id="btn-submit-answer"><i class="fa-solid fa-paper-plane"></i> Submit Answer</button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- Question Evaluation Card (Visible after submit) -->
+                  <div class="dashboard-card glass-card hidden border-success-subtle" id="interview-evaluation-box">
+                    <div class="card-header-row">
+                      <h3 class="text-success"><i class="fa-solid fa-square-poll-vertical"></i> Question Evaluation</h3>
+                      <span class="score-badge" id="evaluation-question-score">85/100</span>
+                    </div>
+                    
+                    <div class="evaluation-detail-grid">
+                      <div class="eval-block">
+                        <strong><i class="fa-solid fa-circle-check text-success"></i> Strengths:</strong>
+                        <p id="evaluation-strengths"></p>
+                      </div>
+                      <div class="eval-block">
+                        <strong><i class="fa-solid fa-circle-xmark text-danger"></i> Weaknesses:</strong>
+                        <p id="evaluation-weaknesses"></p>
+                      </div>
+                    </div>
+                    <div class="eval-suggestions">
+                      <strong><i class="fa-solid fa-lightbulb text-warning"></i> Suggestions for Improvement:</strong>
+                      <p id="evaluation-suggestions"></p>
+                    </div>
+
+                    <button class="btn btn-primary margin-t-md" id="btn-next-question">Next Question <i class="fa-solid fa-arrow-right"></i></button>
+                  </div>
+
+                  <!-- Final Interview Score Card (Visible when done) -->
+                  <div class="dashboard-card glass-card hidden text-center" id="interview-completed-box">
+                    <h2><i class="fa-solid fa-circle-check text-success"></i> Interview Completed!</h2>
+                    <p>All questions have been evaluated. Below is your aggregate score.</p>
+                    
+                    <div class="score-circle-wrapper margin-y-lg">
+                      <svg class="progress-ring" width="160" height="160">
+                        <circle class="progress-ring-circle-bg" stroke="rgba(255,255,255,0.05)" stroke-width="12" fill="transparent" r="70" cx="80" cy="80"/>
+                        <circle class="progress-ring-circle" id="interview-final-ring" stroke="var(--success)" stroke-width="12" stroke-dasharray="440" stroke-dashoffset="440" fill="transparent" r="70" cx="80" cy="80"/>
+                      </svg>
+                      <div class="score-number" id="interview-final-score">0%</div>
+                    </div>
+
+                    <p>The results and details have been logged in your database history profile.</p>
+                    <button class="btn btn-secondary margin-t-md" id="btn-reset-interview">Start Another Session</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 8: VERSION HISTORY -->
+          <div id="tab-history" class="tab-pane">
+            <div class="dashboard-card glass-card">
+              <div class="history-controls-row">
+                <div class="search-box">
+                  <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                  <input type="text" id="history-search" class="form-input input-sm" placeholder="Search resumes...">
+                </div>
+                <div class="filter-box">
+                  <select id="history-filter-role" class="form-select select-sm">
+                    <option value="">All Roles</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Main History Table -->
+              <div class="table-container">
+                <table class="dashboard-table">
+                  <thead>
+                    <tr>
+                      <th>Filename</th>
+                      <th>Version</th>
+                      <th>Target Role</th>
+                      <th>Target Company</th>
+                      <th>ATS Score</th>
+                      <th>Date Analyzed</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="history-table-tbody">
+                    <!-- Injected via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Version Comparison Card -->
+            <div class="dashboard-card glass-card margin-t-lg">
+              <h3>Resume Version Comparison</h3>
+              <p>Compare two resume versions side-by-side to review changes in keywords matching, formatting, and overall scores.</p>
+              
+              <div class="form-row-3 margin-y-sm">
+                <div class="form-group">
+                  <label for="compare-v1-select">Version A</label>
+                  <select id="compare-v1-select" class="form-select select-sm"></select>
+                </div>
+                <div class="form-group">
+                  <label for="compare-v2-select">Version B</label>
+                  <select id="compare-v2-select" class="form-select select-sm"></select>
+                </div>
+                <div class="form-group align-end">
+                  <button class="btn btn-accent btn-sm btn-block" id="btn-compare-versions"><i class="fa-solid fa-code-compare"></i> Compare Side-by-Side</button>
+                </div>
+              </div>
+
+              <!-- Side-by-Side Table Matrix -->
+              <div class="comparison-matrix-container hidden" id="comparison-matrix-box">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Metric</th>
+                      <th id="compare-name-a">Version A</th>
+                      <th id="compare-name-b">Version B</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Overall ATS Score</strong></td>
+                      <td><span class="badge" id="compare-score-a">0%</span></td>
+                      <td><span class="badge" id="compare-score-b">0%</span></td>
+                    </tr>
+                    <tr>
+                      <td>Formatting Score</td>
+                      <td id="compare-formatting-a">0%</td>
+                      <td id="compare-formatting-b">0%</td>
+                    </tr>
+                    <tr>
+                      <td>Skills Score</td>
+                      <td id="compare-skills-a">0%</td>
+                      <td id="compare-skills-b">0%</td>
+                    </tr>
+                    <tr>
+                      <td>Experience Score</td>
+                      <td id="compare-experience-a">0%</td>
+                      <td id="compare-experience-b">0%</td>
+                    </tr>
+                    <tr>
+                      <td>Keyword Score</td>
+                      <td id="compare-keyword-a">0%</td>
+                      <td id="compare-keyword-b">0%</td>
+                    </tr>
+                    <tr>
+                      <td>Matched Keywords count</td>
+                      <td id="compare-keywords-a-count">0</td>
+                      <td id="compare-keywords-b-count">0</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 9: SETTINGS -->
+          <div id="tab-settings" class="tab-pane">
+            <div class="settings-grid">
+              
+              <!-- Profile Settings -->
+              <div class="dashboard-card glass-card flex-1">
+                <h3>Profile Information</h3>
+                <form id="form-settings-profile">
+                  <div class="form-group">
+                    <label>Profile Avatar</label>
+                    <div class="avatar-selector-row">
+                      <label class="avatar-option">
+                        <input type="radio" name="settings-avatar" value="avatar-1" checked>
+                        <div class="avatar-preview bg-primary"><i class="fa-solid fa-code"></i></div>
+                      </label>
+                      <label class="avatar-option">
+                        <input type="radio" name="settings-avatar" value="avatar-2">
+                        <div class="avatar-preview bg-accent"><i class="fa-solid fa-terminal"></i></div>
+                      </label>
+                      <label class="avatar-option">
+                        <input type="radio" name="settings-avatar" value="avatar-3">
+                        <div class="avatar-preview bg-success"><i class="fa-solid fa-laptop-code"></i></div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="settings-name">Full Name</label>
+                    <input type="text" id="settings-name" class="form-input" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="settings-email">Email Address</label>
+                    <input type="email" id="settings-email" class="form-input" required>
+                  </div>
+                  
+                  <h4>Social Profiles (LinkedIn/GitHub)</h4>
+                  <div class="form-group">
+                    <label for="settings-linkedin">LinkedIn Profile URL</label>
+                    <input type="url" id="settings-linkedin" class="form-input">
+                  </div>
+                  <div class="form-group">
+                    <label for="settings-github">GitHub Profile URL</label>
+                    <input type="url" id="settings-github" class="form-input">
+                  </div>
+                  <div class="form-group">
+                    <label for="settings-portfolio">Portfolio URL</label>
+                    <input type="url" id="settings-portfolio" class="form-input">
+                  </div>
+                  
+                  <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Update Profile</button>
+                </form>
+              </div>
+
+              <!-- Security Settings -->
+              <div class="dashboard-card glass-card flex-1">
+                <h3>Change Password</h3>
+                <form id="form-settings-password">
+                  <div class="form-group">
+                    <label for="settings-old-pass">Current Password</label>
+                    <input type="password" id="settings-old-pass" class="form-input" required placeholder="••••••••">
+                  </div>
+                  <div class="form-group">
+                    <label for="settings-new-pass">New Password</label>
+                    <input type="password" id="settings-new-pass" class="form-input" required placeholder="Min 6 characters">
+                  </div>
+                  <button type="submit" class="btn btn-primary"><i class="fa-solid fa-key"></i> Update Password</button>
+                </form>
+
+                <!-- Preferences Settings -->
+                <h3 class="margin-t-lg">System Preferences</h3>
+                <form id="form-settings-preferences">
+                  <div class="form-group">
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="settings-notifications" checked>
+                      <span class="checkmark"></span>
+                      Enable Email Alerts & Reports
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="settings-autooptimize">
+                      <span class="checkmark"></span>
+                      Auto-Optimize Resume during uploads (Gemini)
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-secondary btn-sm"><i class="fa-solid fa-gear"></i> Save Preferences</button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+
+  </div>
+
+  <!-- Client-side SPA Scripts -->
+  <script src="js/theme.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
