@@ -321,6 +321,10 @@ const analyzeResume = async (resumeText, targetRole, targetCompany) => {
 
     const prompt = `
       You are a professional recruiting coordinator and expert resume reviewer.
+      First, evaluate if the provided text is a candidate's resume or CV. 
+      If the text is empty, a job description, an essay, nonsense text, or any document that is clearly NOT a candidate's resume, set "isInvalidDocument" to true and provide a description in "validationError" explaining why (e.g. "The uploaded file appears to be a Job Description rather than a resume").
+      Otherwise, set "isInvalidDocument" to false and "validationError" to null.
+
       Analyze the following resume text. Your evaluation must be tailored specifically to the target role of "${targetRole}" and target company "${targetCompany}".
       If the company is "Any", evaluate against industry standards for the role.
       
@@ -331,6 +335,8 @@ const analyzeResume = async (resumeText, targetRole, targetCompany) => {
 
       Return a JSON object matching this schema:
       {
+        "isInvalidDocument": boolean,
+        "validationError": string or null,
         "overallScore": number (0-100, aggregate quality score based on relevance to role & company),
         "scores": {
           "formatting": number (0-100, checks line breaks, structure, clear headers),

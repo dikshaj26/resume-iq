@@ -89,8 +89,118 @@ const uploadResume = async (req, res, next) => {
     // 1. Extract text from PDF
     const extractedText = await parsePDF(pdfPath);
 
+    // Validate if the extracted text is empty or is not a valid resume
+    const cleanText = extractedText ? extractedText.trim() : '';
+    
+    // DEBUG LOGS
+    console.log('--- UPLOAD VALIDATION DEBUG ---');
+    console.log('Extracted Text Length:', cleanText.length);
+    console.log('Extracted Text Snippet:\n', cleanText.substring(0, 300));
+
+    if (cleanText.length < 150) {
+      if (fs.existsSync(pdfPath)) {
+        fs.unlinkSync(pdfPath);
+      }
+      return res.status(400).json({ 
+        success: false, 
+        message: 'The uploaded PDF is empty, too short, or has no readable text. Please upload a valid text-based resume.' 
+      });
+    }
+    
+    const lowerText = cleanText.toLowerCase();
+    
+    // 1. Check for standard contact details (email/phone) or sections
+    const hasEmail = /[\w.-]+@[\w.-]+\.\w+/.test(cleanText);
+    const hasPhone = /(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/.test(cleanText);
+    
+    // 2. Check for 4-digit years (e.g., 2018, 2024) representing graduation or employment dates
+    const hasYears = /\b(19|20)\d{2}\b/.test(cleanText);
+    
+    // 3. Check for typical Job Description keywords
+    const jdKeywords = [
+      'we are looking for', 'we are seeking', 'about the role', 'job description',
+      'responsibilities include', 'who you are', 'what you will do', 'ideal candidate',
+      'requirements:', 'we offer', 'competitive salary', 'equal opportunity employer',
+      'reports to', 'join our team', 'visa sponsorship'
+    ];
+    const jdMatches = jdKeywords.filter(keyword => lowerText.includes(keyword));
+    
+    // 4. Check for typical Resume section titles
+    const resumeKeywords = [
+      'experience', 'work history', 'education', 'skills', 'projects', 'languages',
+      'professional summary', 'objective', 'employment', 'certificates', 'achievements'
+    ];
+    const resumeMatches = resumeKeywords.filter(keyword => lowerText.includes(keyword));
+
+    console.log('hasEmail:', hasEmail);
+    console.log('hasPhone:', hasPhone);
+    console.log('hasYears:', hasYears);
+    console.log('jdMatches (Count:', jdMatches.length, '):', jdMatches);
+    console.log('resumeMatches (Count:', resumeMatches.length, '):', resumeMatches);
+    console.log('-------------------------------');
+
+    // Decisive Check: If it has NO personal email and contains job-posting keywords, block it immediately
+    const jdSpecificKeywords = [
+      'job description', 'position', 'duration', 'eligibility', 'ppo', 'fresher', 'internship', 'stipend', 'intern / fresher'
+    ];
+    const jdSpecificMatches = jdSpecificKeywords.filter(keyword => lowerText.includes(keyword));
+
+    if (!hasEmail && jdSpecificMatches.length >= 1) {
+      if (fs.existsSync(pdfPath)) {
+        fs.unlinkSync(pdfPath);
+      }
+      return res.status(400).json({ 
+        success: false, 
+        message: 'The uploaded file appears to be a Job Description or lacks your personal contact details (email address). Please upload a valid candidate resume.' 
+      });
+    }
+
+    // Decisive Check A: High density of JD phrases (definitely a Job Description)
+    if (jdMatches.length >= 3) {
+      if (fs.existsSync(pdfPath)) {
+        fs.unlinkSync(pdfPath);
+      }
+      return res.status(400).json({ 
+        success: false, 
+        message: 'The uploaded file appears to be a Job Description or Job Posting. Please upload your personal resume instead.' 
+      });
+    }
+
+    // Decisive Check B: Has JD phrases and lacks dates/years (likely a Job Description)
+    if (jdMatches.length >= 2 && !hasYears) {
+      if (fs.existsSync(pdfPath)) {
+        fs.unlinkSync(pdfPath);
+      }
+      return res.status(400).json({ 
+        success: false, 
+        message: 'The uploaded file appears to be a Job Description rather than a candidate resume. Resumes must contain employment dates or graduation years.' 
+      });
+    }
+
+    // Decisive Check C: Lacks both dates/years and common resume headings (likely nonsense or plain text)
+    if (!hasYears && resumeMatches.length < 2) {
+      if (fs.existsSync(pdfPath)) {
+        fs.unlinkSync(pdfPath);
+      }
+      return res.status(400).json({ 
+        success: false, 
+        message: 'The uploaded document does not contain standard resume sections (like Experience or Education) or employment dates.' 
+      });
+    }
+
     // 2. Call Gemini service to structure and analyze resume
     const aiAnalysis = await analyzeResume(extractedText, targetRole, targetCompany);
+
+    // If the AI service detects an invalid document
+    if (aiAnalysis.isInvalidDocument) {
+      if (fs.existsSync(pdfPath)) {
+        fs.unlinkSync(pdfPath);
+      }
+      return res.status(400).json({ 
+        success: false, 
+        message: aiAnalysis.validationError || 'The uploaded file was recognized by AI as an invalid document. Please upload a valid resume.' 
+      });
+    }
 
     // 3. Local heuristics to adjust formatting and readability score
     const localMetrics = calculateLocalAtsMetrics(extractedText);

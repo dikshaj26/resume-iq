@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResumeIQ – Complete Developer Study Guide & Masterclass</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #1a73e8;
+      border-bottom: 2px solid #1a73e8;
+      padding-bottom: 10px;
+      font-size: 2.2rem;
+      margin-top: 40px;
+    }
+    h2 {
+      color: #202124;
+      font-size: 1.6rem;
+      margin-top: 30px;
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 5px;
+    }
+    h3 {
+      color: #1a73e8;
+      font-size: 1.25rem;
+      margin-top: 20px;
+    }
+    p, li {
+      font-size: 1rem;
+      color: #3c4043;
+    }
+    ul, ol {
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    code {
+      font-family: Consolas, monospace;
+      background-color: #f1f3f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+    pre {
+      background-color: #f8f9fa;
+      border: 1px solid #dadce0;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: Consolas, monospace;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #dadce0;
+      padding: 10px;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    th {
+      background-color: #f1f3f4;
+      font-weight: 600;
+    }
+    .concept-box {
+      background-color: #e8f0fe;
+      border-left: 5px solid #1a73e8;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .concept-box h4 {
+      margin: 0 0 10px 0;
+      color: #1a73e8;
+      font-size: 1.1rem;
+    }
+    .analogy-box {
+      background-color: #fef7e0;
+      border-left: 5px solid #f9ab00;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .analogy-box h4 {
+      margin: 0 0 10px 0;
+      color: #b06000;
+      font-size: 1.1rem;
+    }
+    .flow-step {
+      margin-bottom: 15px;
+      padding-left: 10px;
+      border-left: 3px solid #1a73e8;
+    }
+  </style>
+</head>
+<body>
+
+  <div style="text-align: center; margin-bottom: 50px;">
+    <h1 style="border: none; margin-bottom: 5px; color: #1a73e8;">RESUMEIQ: DEVELOPER STUDY GUIDE & MASTERCLASS</h1>
+    <p><em>The Complete, Unabridged Full-Stack Project Reference Guide for Interviews, Resumes, and College Presentations.</em></p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h1>SECTION 1: PROJECT OVERVIEW</h1>
+  
+  <h2>What is ResumeIQ?</h2>
+  <p><strong>ResumeIQ</strong> is an AI-powered SaaS (Software as a Service) platform that helps job seekers audit, optimize, and edit their resumes. It simulates the screening systems used by companies and provides feedback to increase job search success.</p>
+
+  <h2>The Core Problem</h2>
+  <p>When a candidate applies for a job online, their resume is processed by an <strong>ATS (Applicant Tracking System)</strong>—a software filter that scans resumes for specific keywords and formatting styles.</p>
+  
+  <h3>The Issue</h3>
+  <p>If a resume has unparseable layouts (like two columns, tables, or icons) or lacks the exact technical terms mentioned in the job description, it is immediately discarded.</p>
+  <p><strong>Up to 75% of resumes are filtered out automatically before a human recruiter ever sees them.</strong></p>
+
+  <h3>The Solution</h3>
+  <p>ResumeIQ simulates ATS filters by:</p>
+  <ul>
+    <li>Extracting text from PDF resumes.</li>
+    <li>Running ATS compatibility tests.</li>
+    <li>Using AI to suggest and insert missing keywords.</li>
+    <li>Simulating mock interviews to help candidates prepare.</li>
+  </ul>
+
+  <div class="concept-box">
+    <h4>💡 Beginner Concept: What is a Web App?</h4>
+    <p>A <strong>web app (web application)</strong> is an interactive website that processes files, calculates scores, communicates with external databases, and saves account settings (like Gmail, Spotify, or Notion).</p>
+    <p><strong>How ResumeIQ Uses It:</strong> ResumeIQ is a web app because it processes file uploads, communicates with AI, and stores account details in a database.</p>
+  </div>
+
+  <div class="analogy-box">
+    <h4>💡 Analogy: The Strict Club Bouncer</h4>
+    <p>Imagine trying to get into an exclusive VIP club. The club has a strict bouncer checking:</p>
+    <ul>
+      <li><strong>Dress Code</strong> – Are your fonts and section headers formatted correctly?</li>
+      <li><strong>Password</strong> – Do you have the required keywords (like SQL or Figma)?</li>
+      <li><strong>Invitation Details</strong> – Does your target company or role match?</li>
+    </ul>
+    <p>If you fail any check, you are rejected immediately. <strong>ResumeIQ</strong> is like your personal stylist standing next to you in line—helping you fix your clothes (formatting) and whispering the password (keywords) before you step up to the bouncer (the ATS).</p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <h1>SECTION 2: FEATURES & WORKFLOWS</h1>
+
+  <h2>1. PDF Resume Upload & Text Extraction</h2>
+  <h3>What It Does</h3>
+  <p>Reads your uploaded PDF file and converts all the text inside it into a single JavaScript text string.</p>
+  <h3>Why It Is Useful</h3>
+  <p>Computers cannot read a PDF visually like we do; they need plain text. We must extract this text before we can run any checks.</p>
+  <h3>Internal Workflow</h3>
+  <p>When the file is uploaded, the backend uses a library called <strong>pdf-parse</strong>. This library:</p>
+  <ul>
+    <li>Scans the binary pages of the PDF.</li>
+    <li>Extracts all letters and text.</li>
+    <li>Returns them as one clean text string.</li>
+  </ul>
+
+  <h2>2. Dynamic Career-Track Keyword Matching</h2>
+  <h3>What It Does</h3>
+  <p>Checks your resume text for technical skills tailored to your target industry, including:</p>
+  <ul>
+    <li>Software Engineering</li>
+    <li>Data Analytics</li>
+    <li>UI/UX Design</li>
+    <li>Product Management</li>
+    <li>Teaching</li>
+    <li>HR</li>
+    <li>Finance/CA</li>
+  </ul>
+  <h3>Why It Is Useful</h3>
+  <p>It ensures that a teacher is graded on education skills (like Lesson Planning) while a developer is graded on technical skills (like React).</p>
+  <h3>Internal Workflow</h3>
+  <p>The server checks the target role, selects the corresponding keyword checklist, and uses case-insensitive <strong>Regular Expressions (RegExp)</strong> to find matching skills.</p>
+
+  <h2>3. Real-Time Resume Builder Canvas</h2>
+  <h3>What It Does</h3>
+  <p>Provides a split-screen interface where the left panel is an accordion input form, and the right panel is an A4 resume preview that updates instantly as you type.</p>
+  <h3>Why It Is Useful</h3>
+  <p>It allows users to visually edit and format their resumes without leaving the application.</p>
+  <h3>Internal Workflow</h3>
+  <p>As the user types, JavaScript captures keystrokes using <strong>DOM Event Listeners</strong>. The updated values are immediately inserted into the resume preview's HTML, and the preview refreshes in real time.</p>
+
+  <h2>4. One-Click AI Resume Optimizer</h2>
+  <h3>What It Does</h3>
+  <p>Automatically rewrites the resume's professional summary and experience section by adding missing ATS keywords.</p>
+  <h3>Why It Is Useful</h3>
+  <p>It saves users from manually figuring out how to naturally include important technical keywords.</p>
+  <h3>Internal Workflow</h3>
+  <p>The client sends the resume text and missing keyword list. The backend sends this data to Google Gemini. Gemini returns a cleaned JSON object containing rewritten summaries. The frontend automatically updates the input fields and redraws the resume preview.</p>
+
+  <h2>5. Conversational Mock Interview Simulator</h2>
+  <h3>What It Does</h3>
+  <p>Generates 5 customized interview questions (HR, Technical, Behavioral, and Project-based) based on the candidate's resume and target role.</p>
+  <h3>Why It Is Useful</h3>
+  <p>It helps candidates improve communication skills, technical interview performance, and confidence.</p>
+  <h3>Internal Workflow</h3>
+  <p>Gemini generates interview questions using the candidate's parsed profile. The user submits answers, and the AI grades each answer out of 100, highlighting strengths, weaknesses, and suggestions for improvement. Interview sessions are stored in MongoDB.</p>
+
+  <h2>6. Social Portfolio Auditor</h2>
+  <h3>What It Does</h3>
+  <p>Reviews links such as GitHub, LinkedIn, and Portfolio, and rates their branding and layout.</p>
+  <h3>Why It Is Useful</h3>
+  <p>Recruiters often review online profiles before hiring. An optimized profile increases credibility.</p>
+  <h3>Internal Workflow</h3>
+  <p>The frontend sends profile links to the backend. The backend evaluates their layout, Gemini (or fallback templates) generates recommendations, and results are returned to the frontend.</p>
+
+  <h2>7. A4 PDF Print Exporter</h2>
+  <h3>What It Does</h3>
+  <p>Exports the styled resume canvas as a clean, single-page A4 PDF.</p>
+  <h3>Why It Is Useful</h3>
+  <p>Ensures the resume maintains proper formatting after conversion to PDF.</p>
+  <h3>Internal Workflow</h3>
+  <p>The application uses a CSS <code>@media print</code> style block. When <code>window.print()</code> is called, the dashboard sidebar, forms, and headers are hidden, leaving only the resume canvas visible for printing.</p>
+
+  <!-- SECTION 3 -->
+  <h1>SECTION 3: COMPLETE PROJECT FLOW</h1>
+  <p>This is what happens from the moment a user opens the website until they receive the final output:</p>
+
+  <div class="flow-step">
+    <strong>Step 1: Opens the Website</strong>
+    <p>The browser loads <code>index.html</code> on <code>http://localhost:3001</code>. The Single Page Application (SPA) routing engine checks <code>localStorage</code> for a JWT token. If a valid token is found, the user stays logged in; if no token exists, the landing page is displayed.</p>
+  </div>
+
+  <div class="flow-step">
+    <strong>Step 2: Registration / Login</strong>
+    <p>The user creates an account or logs in.</p>
+    <ul>
+      <li><strong>Backend Process:</strong> Receives details, hashes the password using BcryptJS, stores the user in MongoDB, generates a JWT token, and returns it.</li>
+      <li><strong>Frontend Process:</strong> Saves the JWT token inside <code>localStorage</code> to authenticate future requests.</li>
+    </ul>
+  </div>
+
+  <div class="flow-step">
+    <strong>Step 3: Upload Resume</strong>
+    <p>The user opens the Upload tab, enters the target role (e.g., Data Analyst), target company (e.g., Netflix), and uploads a PDF resume.</p>
+  </div>
+
+  <div class="flow-step">
+    <strong>Step 4: File Extraction</strong>
+    <p>Once uploaded, Multer intercepts the file, and <code>pdf-parse</code> extracts all text. The text is sent to Google Gemini (or the offline fallback engine), which returns an ATS Scorecard JSON. The backend saves a new Resume version and the Analysis Report.</p>
+  </div>
+
+  <div class="flow-step">
+    <strong>Step 5: Scorecard Visuals</strong>
+    <p>The frontend router updates the URL hash to <code>#analysis</code> and generates a Chart.js Radar Chart showing scores for Formatting, Keywords, Skills, and Readability.</p>
+  </div>
+
+  <div class="flow-step">
+    <strong>Step 6: Optimize with AI</strong>
+    <p>The user navigates to the Resume Builder. Clicking "Run One-Click AI Optimizer" sends the resume text to Gemini, which rewrites the Professional Summary to naturally add missing ATS keywords. The canvas and inputs update instantly.</p>
+  </div>
+
+  <div class="flow-step">
+    <strong>Step 7: Mock Interview</strong>
+    <p>The user opens the Mock Interview tab. The application generates questions, accepts user answers, sends them to Gemini, and receives a score, feedback, strengths, weaknesses, and suggestions. The complete session is stored in MongoDB.</p>
+  </div>
+
+  <div class="flow-step">
+    <strong>Step 8: Export PDF</strong>
+    <p>The user clicks "Download PDF." The browser opens the Print Preview. The print CSS automatically hides the dashboard navigation and forms, leaving only the resume document visible for A4 PDF export.</p>
+  </div>
+
+  <!-- SECTION 4 -->
+  <h1>SECTION 4: SYSTEM ARCHITECTURE</h1>
+  <p>ResumeIQ follows a <strong>Decoupled Client–Server Architecture</strong> built using the <strong>MVC (Model–View–Controller)</strong> design pattern.</p>
+
+  <pre>
+               Browser (Frontend SPA)
+                         │
+            HTTPS REST API Requests
+                         │
+                         ▼
+             Express Backend (Node.js)
+                         │
+        ┌────────────────┴────────────────┐
+        │                                 │
+        ▼                                 ▼
+ MongoDB Database                 Google Gemini API
+(User, Resume, Reports)     (Resume Analysis & AI Grading)
+  </pre>
+
+  <h3>Browser SPA (Frontend UI)</h3>
+  <p><strong>Role:</strong> The interface that users interact with.</p>
+  <p><strong>Responsibilities:</strong> Displays pages, handles navigation, accepts user input, uploads resumes, shows ATS reports, displays mock interview questions, and renders the live resume builder. It communicates with the backend using HTTPS REST API requests.</p>
+
+  <h3>Express Backend (Node.js Server)</h3>
+  <p><strong>Role:</strong> Acts as the brain of the application.</p>
+  <p><strong>Responsibilities:</strong> Receives API requests, verifies JWT authorization, processes uploaded files, extracts text from PDFs, calls Google Gemini, calculates ATS scores, stores data in MongoDB, and sends responses back.</p>
+
+  <h3>MongoDB Database</h3>
+  <p><strong>Role:</strong> Stores all persistent application data (User Accounts, Resume Versions, ATS Reports, Mock Interview Sessions, User Settings). It stores data as JSON-like documents, making it ideal for nested resume structures.</p>
+
+  <h3>Google Gemini API</h3>
+  <p><strong>Role:</strong> Provides AI-powered features (Resume Analysis, ATS Evaluation, Keyword Suggestions, Resume Optimization, Mock Interview Question Generation, Answer Evaluation, and Social Profile Review). Gemini returns structured JSON responses that are displayed in the app.</p>
+
+  <h3>How All Components Work Together</h3>
+  <p>The user interacts with the Frontend. The frontend sends API requests to the Express Backend. The backend verifies authentication, processes business logic, calls MongoDB when data needs to be stored or retrieved, and calls Google Gemini whenever AI analysis is required. The backend sends the final result back to the frontend, which updates the UI dynamically.</p>
+
+  <!-- SECTION 5 -->
+  <h1>SECTION 5: TECH STACK DECONSTRUCTION</h1>
+  <p>A Tech Stack is the collection of technologies, programming languages, frameworks, libraries, databases, and tools used to build an application.</p>
+
+  <ol>
+    <li><strong>Node.js:</strong> A JavaScript runtime that allows JavaScript code to run on the server. We used it to build the backend server, process requests, handle uploads, and connect to APIs.</li>
+    <li><strong>Express.js:</strong> A lightweight web framework built on top of Node.js. It helps us create REST APIs, handle routing, process requests, and manage middleware.</li>
+    <li><strong>MongoDB:</strong> A NoSQL document database. It stores data as JSON-like documents. This is perfect for resumes because everything (skills, education, experience, projects) can be stored inside one document rather than many SQL tables.</li>
+    <li><strong>Mongoose:</strong> An ODM (Object Document Mapper) for MongoDB. It converts JavaScript objects into MongoDB documents, helping us create schemas, validate data, and run queries.</li>
+    <li><strong>Google Gemini API:</strong> Google's Large Language Model (LLM). We used it to perform semantic evaluations like resume analysis, keyword suggestions, resume optimization, and mock interview grading.</li>
+    <li><strong>Vanilla JavaScript:</strong> Plain JavaScript without using frameworks. We used it to build the Single Page Application, update the DOM, handle routing, manage events, and render the Resume Builder.</li>
+    <li><strong>Multer:</strong> Express middleware used for uploading files. It accepts uploaded PDF resumes, validates file types, and saves files temporarily.</li>
+    <li><strong>pdf-parse:</strong> A Node.js library used to extract text from PDF files. It reads binary PDF data and extracts all text, returning plain text for ATS analysis.</li>
+    <li><strong>BcryptJS:</strong> A password hashing library. Instead of storing passwords directly, it converts them into secure hashes so user accounts remain protected.</li>
+    <li><strong>JWT (JSON Web Token):</strong> A secure authentication token. After login, the server generates a signed token containing the user's ID. The browser stores it in <code>localStorage</code> and sends it with every authenticated request.</li>
+  </ol>
+
+  <!-- SECTION 6 -->
+  <h1>SECTION 6: FOLDER STRUCTURE BLUEPRINT</h1>
+  <p>We organize our code into folders to keep the codebase clean and maintainable. ResumeIQ separates files according to their responsibilities:</p>
+
+  <ul>
+    <li><strong><code>config/</code></strong>: Stores configuration files (like <code>db.js</code>) that connect Node.js to MongoDB using Mongoose.</li>
+    <li><strong><code>models/</code></strong>: Contains all Mongoose database schemas (User, Resume, AnalysisReport, MockInterview) defining how data is stored inside MongoDB.</li>
+    <li><strong><code>middleware/</code></strong>: Contains functions that run before controllers (like `authMiddleware.js` to verify JWT tokens and block unauthorized users).</li>
+    <li><strong><code>controllers/</code></strong>: Contains the application's business logic (like `resumeController.js`). Controllers receive requests, process data, call services, query MongoDB, and return responses.</li>
+    <li><strong><code>routes/</code></strong>: Defines API endpoints. It maps URLs (like login, register, upload resume, optimize resume, interview) to their respective controllers.</li>
+    <li><strong><code>services/</code></strong>: Houses third-party integrations (like `pdfService.js` and `geminiService.js` to parse files and manage AI prompts).</li>
+    <li><strong><code>public/</code></strong>: Contains frontend files (HTML, CSS, JavaScript) that run in the user's browser.</li>
+  </ul>
+
+  <!-- SECTION 7 -->
+  <h1>SECTION 7: FRONTEND ARCHITECTURE & SINGLE PAGE ROUTING</h1>
+  
+  <h2>1. Hash-Based SPA Routing</h2>
+  <p>SPA stands for Single Page Application. Instead of loading a new HTML page every time a user clicks a menu option, the application loads one HTML file (<code>index.html</code>) and dynamically changes the visible content using JavaScript. All sections exist inside the same <code>index.html</code> file. When the user clicks a navigation option, the URL hash changes (e.g. from <code>/#dashboard</code> to <code>/#builder</code>). JavaScript listens for this hash change and decides which section should be displayed:</p>
+  <pre>window.addEventListener('hashchange', routeHandler);</pre>
+
+  <h2>2. Client-Side State Management</h2>
+  <p>State means the current data of the application that JavaScript remembers while the application is running. The frontend stores important data inside a single JavaScript object:</p>
+  <pre>
+const state = {
+    user: null,          // Logged-in user information
+    resumes: [],         // All uploaded resume versions
+    currentResume: null, // Resume currently being edited
+    currentReport: null  // ATS report currently displayed
+};
+  </pre>
+
+  <h2>3. DOM Manipulation (Updating the Screen)</h2>
+  <p>DOM stands for Document Object Model. DOM Manipulation means changing the webpage dynamically using JavaScript. For example:</p>
+  <pre>document.getElementById("sidebar-user-name").innerText = state.user.name;</pre>
+  <p>JavaScript finds the element whose ID is <code>sidebar-user-name</code>, reads the logged-in user's name from the <code>state</code> object, and updates the sidebar instantly.</p>
+
+  <div class="concept-box">
+    <h4>💡 Beginner Concept: What is DOM Manipulation?</h4>
+    <p>Think of the webpage like a notebook. HTML creates the notebook. The DOM is the notebook opened in memory. JavaScript acts like a pen. Whenever JavaScript writes something new, erases text, changes colors, or inserts new elements, it is performing DOM Manipulation.</p>
+  </div>
+
+  <!-- SECTION 8 -->
+  <h1>SECTION 8: BACKEND & DATABASE SCHEMAS</h1>
+  
+  <h2>1. Request Lifecycle</h2>
+  <p>Whenever the frontend sends a request to the backend, it passes through several stages:</p>
+  <ol>
+    <li><strong>Route:</strong> Receives the incoming request (e.g. <code>POST /api/resumes/upload</code>) and forwards it to the correct controller.</li>
+    <li><strong>Middleware:</strong> Performs checks before the request reaches the controller (e.g., verifies JWT Token). If verification fails, the request stops here.</li>
+    <li><strong>Controller:</strong> Contains the business logic. It decides what should happen, which database query should run, and whether Gemini should be called.</li>
+    <li><strong>Service:</strong> Handles external operations (like parsing PDF files or calling Gemini).</li>
+    <li><strong>Response:</strong> The controller sends the final response back to the frontend, which updates the UI.</li>
+  </ol>
+
+  <h2>2. Database Schemas (Mongoose)</h2>
+  
+  <h3>A. User Schema (<code>models/User.js</code>)</h3>
+  <p>Stores user account information. Fields include:</p>
+  <ul>
+    <li><code>name</code>: Stores the user's full name.</li>
+    <li><code>email</code>: Unique login identifier.</li>
+    <li><code>password</code>: Stores the encrypted password using BcryptJS instead of plain text.</li>
+  </ul>
+
+  <h3>B. Resume Schema (<code>models/Resume.js</code>)</h3>
+  <p>Stores uploaded resumes and their different versions. Fields include:</p>
+  <ul>
+    <li><code>user</code>: Reference link to the User collection.</li>
+    <li><code>parentResumeId</code>: Links different versions of the same resume together (V1 -> V2 -> V3) to track changes over time.</li>
+    <li><code>version</code>: Stores version numbers (1, 2, 3).</li>
+    <li><code>parsedText</code>: Stores the text extracted from the uploaded PDF.</li>
+  </ul>
+
+  <!-- SECTION 9 -->
+  <h1>SECTION 9: AUTHENTICATION FLOW</h1>
+  <p>Authentication verifies a user's identity before allowing access to protected resources.</p>
+
+  <h2>1. Password Hashing (BcryptJS)</h2>
+  <p>Passwords should never be stored in plain text. When a user registers:</p>
+  <ul>
+    <li>User enters a password.</li>
+    <li>Backend generates a random <strong>Salt</strong>.</li>
+    <li>Bcrypt combines the password and salt to generate a secure hash, which is stored in MongoDB.</li>
+    <li>During login, <code>bcrypt.compare()</code> hashes the entered password again and checks if it matches the stored hash.</li>
+  </ul>
+
+  <h2>2. Stateless JWT Authorization</h2>
+  <p>JWT stands for JSON Web Token. After successful login, the server creates a JWT signed with a secret key. The browser stores it in <code>localStorage</code>. For every protected API request, the browser sends the token in the header:</p>
+  <pre>Authorization: Bearer &lt;token&gt;</pre>
+  <p>The backend reads the token, verifies its signature, extracts the user ID, and grants access if valid. This makes the application fast and scalable because the server does not store login sessions.</p>
+
+  <div class="analogy-box">
+    <h4>💡 Beginner Concept: What is a JSON Web Token (JWT)?</h4>
+    <p>Imagine checking into a hotel. Instead of asking the receptionist every time you enter your room, you are given a key card (the JWT). The key card already contains your room information. Whenever you tap it, the door scanner verifies the card and opens without calling the front desk.</p>
+  </div>
+
+  <!-- SECTION 10 -->
+  <h1>SECTION 10: FILE UPLOAD & ATS SCORING ENGINE</h1>
+
+  <h2>1. File Upload & Parsing</h2>
+  <ul>
+    <li><strong>Multer Receives the File:</strong> Multer accepts PDF uploads, validates that the MIME type is <code>application/pdf</code>, and saves the file temporarily inside the <code>/uploads/</code> folder.</li>
+    <li><strong>PDF Parsing:</strong> The backend passes the file to <code>pdf-parse</code>, which reads binary data, extracts text, and returns one clean text string.</li>
+    <li><strong>File Cleanup:</strong> Once text extraction is complete, the server immediately deletes the uploaded PDF using <code>fs.unlink()</code> to protect user privacy and save space.</li>
+  </ul>
+
+  <h2>2. Heuristic Scoring Calculations</h2>
+  <p>Before calling Gemini, ResumeIQ performs several local ATS checks using predefined rules (heuristics):</p>
+  <ul>
+    <li><strong>Structure Score:</strong> Checks whether important sections (Experience, Education, Skills, Projects) exist using Regular Expressions (Regex).</li>
+    <li><strong>Readability Score:</strong> Evaluates the total number of words. The optimal range is <strong>300–800 words</strong>; resumes that are too short or too long receive lower scores.</li>
+    <li><strong>Formatting Score:</strong> Counts formatting elements like bullet points (<code>•</code>, <code>-</code>, <code>*</code>) to verify consistency.</li>
+  </ul>
+
+  <div class="concept-box">
+    <h4>💡 Beginner Concept: What is Regex?</h4>
+    <p>Regex (Regular Expression) is a search pattern used to find specific text inside larger blocks of text (like email addresses, phone numbers, or section headings).</p>
+  </div>
+
+  <!-- SECTION 11 -->
+  <h1>SECTION 11: THE AI ENGINE & PROMPT ENGINEERING</h1>
+  <p>The AI Engine is the intelligent part of ResumeIQ. It uses Google Gemini 1.5 Flash to perform semantic analysis (understanding context and meaning rather than simply searching for exact keywords).</p>
+
+  <h2>1. Prompt Engineering</h2>
+  <p>Prompt Engineering is the process of writing clear instructions for an AI model so that it returns a clean JSON object containing the exact structure we need:</p>
+  
+  <pre>
+const prompt = `
+  You are a professional recruiting coordinator.
+  Analyze the following resume text. Your evaluation must be tailored specifically to the target role of "${targetRole}" and target company "${targetCompany}".
+  
+  Resume Content:
+  "${resumeText}"
+
+  Return a JSON object matching this schema:
+  {
+    "overallScore": number (0-100),
+    "scores": { "skills": number, "keyword": number, "formatting": number },
+    "skillsMatch": {
+      "matched": ["string"],
+      "missing": ["string"]
+    }
+  }
+`;
+  </pre>
+
+  <h2>2. Offline Fallback Engine (No API Key Mode)</h2>
+  <p>If <code>GEMINI_API_KEY</code> is not available, the backend automatically switches to the fallback engine. It uses local Regex searches and target-role keyword lists (supporting Developer, Designer, PM, HR, Teacher, CA, MBA) to calculate scores and generate structured analysis reports offline.</p>
+
+  <!-- SECTION 12 -->
+  <h1>SECTION 12: DYNAMIC API SPECIFICATIONS</h1>
+  <p>An API allows the frontend and backend to communicate. Here are the endpoints used in ResumeIQ:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Endpoint</th>
+        <th>Purpose</th>
+        <th>Request / Response Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>POST</strong></td>
+        <td><code>/api/auth/register</code></td>
+        <td>Creates a new user account.</td>
+        <td>Hashes password using BcryptJS, stores user, returns JWT token.</td>
+      </tr>
+      <tr>
+        <td><strong>POST</strong></td>
+        <td><code>/api/auth/login</code></td>
+        <td>Authenticates an existing user.</td>
+        <td>Verifies credentials, generates JWT, browser stores it in localStorage.</td>
+      </tr>
+      <tr>
+        <td><strong>GET</strong></td>
+        <td><code>/api/auth/me</code></td>
+        <td>Fetches user profile details.</td>
+        <td>Requires JWT token in headers. Returns name and email.</td>
+      </tr>
+      <tr>
+        <td><strong>POST</strong></td>
+        <td><code>/api/resumes/upload</code></td>
+        <td>Uploads and analyzes a PDF resume.</td>
+        <td>Parses file, runs ATS/AI check, saves Resume & Analysis Report.</td>
+      </tr>
+      <tr>
+        <td><strong>GET</strong></td>
+        <td><code>/api/resumes/</code></td>
+        <td>Returns all parent resumes.</td>
+        <td>Useful for displaying resume upload history.</td>
+      </tr>
+      <tr>
+        <td><strong>GET</strong></td>
+        <td><code>/api/resumes/:id</code></td>
+        <td>Returns specific resume details.</td>
+        <td>Returns parsed text, versions list, and ATS report.</td>
+      </tr>
+      <tr>
+        <td><strong>POST</strong></td>
+        <td><code>/api/resumes/:id/version</code></td>
+        <td>Creates a new version of a resume.</td>
+        <td>Saves updated canvas data as a new version branch.</td>
+      </tr>
+      <tr>
+        <td><strong>POST</strong></td>
+        <td><code>/api/resumes/:id/optimize</code></td>
+        <td>Optimizes resume summary via AI.</td>
+        <td>Uses Gemini to rewrite summary with missing keywords.</td>
+      </tr>
+      <tr>
+        <td><strong>POST</strong></td>
+        <td><code>/api/interviews/session</code></td>
+        <td>Starts a mock interview session.</td>
+        <td>Generates 5 questions, accepts answers, returns AI scores & feedback.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 13 -->
+  <h1>SECTION 13: CORE FILE ANATOMY</h1>
+  <ul>
+    <li><strong><code>server.js</code></strong>: The main entry point of the Node.js application. Loads environment variables, connects to the database, configures Express, and starts the server.</li>
+    <li><strong><code>services/geminiService.js</code></strong>: Handles all communication with Google Gemini, prompt formats, JSON response parsing, and contains the fallback engine.</li>
+    <li><strong><code>services/atsService.js</code></strong>: The local ATS scoring engine that computes structure, formatting, and readability scores.</li>
+    <li><strong><code>public/js/app.js</code></strong>: The main frontend JavaScript engine that manages SPA routing, event listeners, state updates, and DOM rendering.</li>
+    <li><strong><code>middleware/authMiddleware.js</code></strong>: The security gate that validates the JWT token in incoming headers before letting requests reach routes.</li>
+    <li><strong><code>models/Resume.js</code></strong>: Defines the schema structure for storing resume text, versioning branches, and parsed details.</li>
+  </ul>
+
+  <!-- SECTION 14 -->
+  <h1>SECTION 14: YOUR CONTRIBUTIONS & CHALLENGES</h1>
+  
+  <h2>1. Your Developer Contributions (Pitching points)</h2>
+  <ul>
+    <li><strong>Designed Database Architecture:</strong> Created MongoDB schemas and established parent-child version relationships using Mongoose.</li>
+    <li><strong>Developed PDF Upload & Extraction Pipeline:</strong> Configured Multer to accept PDF uploads, parsed binary data using <code>pdf-parse</code>, and handled file cleanups.</li>
+    <li><strong>Integrated Google Gemini:</strong> Integrated the Gemini SDK to parse resumes, suggest keywords, write cover letters, and grade mock interviews.</li>
+    <li><strong>Built the SPA Frontend:</strong> Engineered the frontend client layout using Vanilla JavaScript and hash-based routing, bypassing heavy frameworks.</li>
+    <li><strong>Created the Resume Builder Canvas:</strong> Built a live editor with real-time DOM updates and CSS print media rules for clean A4 PDF exports.</li>
+  </ul>
+
+  <h2>2. Technical Challenges & Solutions</h2>
+  
+  <h3>Challenge A: RegExp Compilation Crash</h3>
+  <p><strong>Problem:</strong> The local fallback engine scans the resume text for technical skills using regex patterns. If a candidate targeted a role like "C++ Developer," compiling the regex pattern (<code>new RegExp('\\bC++\\b')</code>) threw a syntax crash because <code>+</code> is a special quantifier in regular expressions.</p>
+  <p><strong>Solution:</strong> I added an <code>escapeRegex</code> utility function that escapes regex-specific characters (turning <code>C++</code> into <code>C\+\+</code>) to compile the search pattern safely.</p>
+
+  <h3>Challenge B: Hoisting & UI Boot Crashes</h3>
+  <p><strong>Problem:</strong> In JavaScript, variables declared with <code>const</code> are not hoisted. In my initial code, calling a rendering helper before declaring it with <code>const</code> crashed the script on boot, which also blocked the dropdowns and tab navigation from working.</p>
+  <p><strong>Solution:</strong> I changed the <code>const</code> function expressions to standard <code>function</code> declarations, which are hoisted by the browser engine on startup.</p>
+
+  <h3>Challenge C: Blank PDF Export Previews</h3>
+  <p><strong>Problem:</strong> Hiding the dashboard controls during print was hiding the main parent wrapper (<code>#app-wrapper</code>). Since the resume canvas is inside this wrapper, the print preview rendered as a blank white page.</p>
+  <p><strong>Solution:</strong> I removed <code>#app-wrapper</code> from the hidden print styles list in <code>styles.css</code>. This kept the main container visible, while still hiding the sidebars, forms, and headers.</p>
+
+  <!-- SECTION 15 -->
+  <h1>SECTION 15: RESUME CONTENT</h1>
+  
+  <h3>Project Description (2–3 Lines)</h3>
+  <p>Developed ResumeIQ, an AI-powered SaaS career accelerator that parses resumes, calculates ATS compatibility scores, suggests optimizations, and conducts interactive mock interviews. Built using a Node.js/Express MVC API backend, MongoDB database schemas, and a lightweight Vanilla JavaScript frontend.</p>
+
+  <h3>ATS-Friendly Resume Bullet Points:</h3>
+  <ul>
+    <li><strong>Full-Stack Development:</strong> Engineered a full-stack SaaS application from scratch using a Node.js/Express MVC API backend and a lightweight Vanilla JavaScript frontend, incorporating Hash-Based SPA Routing.</li>
+    <li><strong>PDF Processing Pipeline:</strong> Built an automated document upload pipeline using Multer and pdf-parse, extracting plain text from uploaded PDF resumes while handling secure file cleanup.</li>
+    <li><strong>Database Schema Design:</strong> Designed and implemented MongoDB schemas (User, Resume, Report, Session) using Mongoose, establishing parent-child relationships to support resume version history.</li>
+    <li><strong>Google Gemini Integration:</strong> Integrated the Google Gemini SDK to analyze resumes, suggest ATS keywords, generate cover letters, and evaluate mock interview answers.</li>
+    <li><strong>Resume Builder Engine:</strong> Built a split-screen resume builder with real-time rendering, live DOM updates, and CSS Print Media Queries for clean A4 PDF Export.</li>
+  </ul>
+
+  <!-- SECTION 16 -->
+  <h1>SECTION 16: INTERVIEW Q&A PREPARATION</h1>
+
+  <h3>20 Common Interview Questions & Answers</h3>
+  
+  <ol>
+    <li>
+      <strong>What is the difference between a Local Score and an AI Score?</strong><br>
+      <em>Answer:</em> The Local Score uses heuristic algorithms running on the server to evaluate resume structure, formatting, section headings, and word count. The AI Score is generated by Google Gemini, which performs semantic analysis to determine how well the resume matches the target role.
+    </li>
+    <li>
+      <strong>How did you resolve the RegExp crash on terms like "C++"?</strong><br>
+      <em>Answer:</em> Characters like <code>+</code> have special meanings in Regular Expressions. Creating a Regex directly using <code>C++</code> caused a syntax error. I solved this by creating an <code>escapeRegex()</code> utility function that converts <code>C++</code> into <code>C\+\+</code>, allowing Regex to compile safely.
+    </li>
+    <li>
+      <strong>What is the role of Multer in the resume upload flow?</strong><br>
+      <em>Answer:</em> Multer is Express middleware that handles multipart file uploads. It receives uploaded PDFs, validates file types, saves files temporarily, and makes them available to backend controllers.
+    </li>
+    <li>
+      <strong>What is Hoisting, and how did it cause a bug?</strong><br>
+      <em>Answer:</em> Hoisting is JavaScript's behavior of moving declarations before execution. Functions declared with <code>const</code> are not hoisted. Calling a rendering helper before its declaration threw a ReferenceError, preventing the UI from loading. I fixed it by converting helper functions into standard function declarations, which are hoisted.
+    </li>
+    <li>
+      <strong>Why is MongoDB called a NoSQL Database?</strong><br>
+      <em>Answer:</em> MongoDB stores information as flexible JSON-like documents instead of rows and columns. This makes it ideal for resumes because resumes contain nested data (skills, experience, projects) without requiring multiple SQL joins.
+    </li>
+    <li>
+      <strong>How does your application protect passwords?</strong><br>
+      <em>Answer:</em> Passwords are hashed using BcryptJS before being stored. Bcrypt combines the password with a random salt and performs one-way hashing; original passwords cannot be recovered.
+    </li>
+    <li>
+      <strong>What is JWT, and how does your application use it?</strong><br>
+      <em>Answer:</em> JWT (JSON Web Token) is a signed authentication token. After login, the server generates a JWT, the browser stores it in localStorage, and every protected request sends the token in the Authorization header. The server verifies the token before granting access.
+    </li>
+    <li>
+      <strong>What is CORS, and why did you configure it?</strong><br>
+      <em>Answer:</em> CORS (Cross-Origin Resource Sharing) is a browser security feature that controls communication between different domains. I configured CORS middleware to allow secure communication between the frontend and backend APIs.
+    </li>
+    <li>
+      <strong>Why did the print preview initially show a blank page?</strong><br>
+      <em>Answer:</em> The print stylesheet hid <code>#app-wrapper</code>. Since the resume canvas was inside this container, the entire resume disappeared during printing. Removing it from the hidden print elements solved the issue.
+    </li>
+    <li>
+      <strong>How does your application parse PDF files?</strong><br>
+      <em>Answer:</em> The application uses <code>pdf-parse</code> to extract plain text from binary PDF files, which is then used for ATS analysis and AI processing.
+    </li>
+    <li>
+      <strong>What is a Single Page Application (SPA), and why did you build the frontend this way?</strong><br>
+      <em>Answer:</em> A Single Page Application loads one HTML page and dynamically updates its content using JavaScript without reloading the browser. This provides faster navigation, better user experience, and lower server load.
+    </li>
+    <li>
+      <strong>How does the Mock Interview module grade answers?</strong><br>
+      <em>Answer:</em> The backend sends the interview question, category, and user's answer to Google Gemini. Gemini evaluates the response and returns a score (out of 100), strengths, weaknesses, and suggestions for improvement.
+    </li>
+    <li>
+      <strong>What happens to uploaded PDF files after parsing?</strong><br>
+      <em>Answer:</em> After extracting text, the server immediately deletes the uploaded file using <code>fs.unlink()</code> to protect user privacy and save storage space.
+    </li>
+    <li>
+      <strong>What are Mongoose References?</strong><br>
+      <em>Answer:</em> Mongoose references create relationships between collections. For example, the Resume schema stores the ObjectId of the User schema, allowing resumes to be linked to specific users.
+    </li>
+    <li>
+      <strong>How does the system handle backend errors?</strong><br>
+      <em>Answer:</em> The application uses centralized error-handling middleware. Controllers pass errors using <code>next(error)</code>, which catches the error and sends a clean, standardized response to the frontend.
+    </li>
+    <li>
+      <strong>What is the difference between Authentication and Authorization?</strong><br>
+      <em>Answer:</em> Authentication verifies who the user is. Authorization determines what the user is allowed to access.
+    </li>
+    <li>
+      <strong>How does the Resume Builder update in real time?</strong><br>
+      <em>Answer:</em> Input fields have JavaScript event listeners attached. Whenever the user types, JavaScript reads the updated values, updates the DOM, and redraws the resume preview canvas without reloading the page.
+    </li>
+    <li>
+      <strong>Why did you choose MongoDB instead of SQL?</strong><br>
+      <em>Answer:</em> Resume data is hierarchical and contains nested information. MongoDB stores nested JSON documents naturally, whereas SQL would require multiple related tables and joins.
+    </li>
+    <li>
+      <strong>What is a .gitignore file, and why is it important?</strong><br>
+      <em>Answer:</em> A .gitignore file tells Git which files should not be uploaded to the repository (like node_modules/ or .env containing API keys) to protect sensitive information.
+    </li>
+    <li>
+      <strong>How would you scale this project for production?</strong><br>
+      <em>Answer:</em> I would store uploaded files in AWS S3, use Redis for caching, integrate OCR (Tesseract.js) to support scanned image PDFs, and optimize database performance.
+    </li>
+  </ol>
+
+  <div style="text-align: center; margin-top: 50px; padding: 20px 0; border-top: 1px solid #dadce0;">
+    <p style="color: #5f6368; font-size: 0.9rem;">🎉 END OF RESUMEIQ: DEVELOPER STUDY GUIDE & MASTERCLASS</p>
+  </div>
+
+</body>
+</html>

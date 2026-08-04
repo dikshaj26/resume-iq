@@ -610,8 +610,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Re-render report details
         renderAnalysisReport(data.report);
         
-        // Trigger builder loading
-        initResumeBuilder();
+        // Redirect to Resume Builder tab to display the optimized resume
+        window.location.hash = '#builder';
       }
     } catch (e) {
       showToast(e.message || 'AI Optimizer failed.', 'danger');

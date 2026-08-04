@@ -1310,7 +1310,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Tab 4: Resume Builder */
 .builder-columns-container {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: 420px minmax(0, 1fr);
   gap: 24px;
   height: calc(100vh - 180px);
 }
@@ -1323,6 +1323,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   gap: 16px;
   height: 100%;
+  min-width: 0;
 }
 .canvas-control-bar {
   display: flex;
@@ -1392,10 +1393,11 @@ h1, h2, h3, h4, h5, h6 {
   background: #2D3748;
   border-radius: var(--radius-lg);
   padding: 32px;
-  overflow-y: auto;
+  overflow: auto;
   display: flex;
   justify-content: center;
   flex-grow: 1;
+  min-width: 0;
 }
 
 /* A4 Resume Styles (Dynamic injection target) */
@@ -1408,6 +1410,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
   font-family: 'Inter', sans-serif;
   text-align: left;
+  margin: auto;
 }
 
 /* A4 TEMPLATE 1: MINIMALIST */
