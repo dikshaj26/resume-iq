@@ -17,9 +17,6 @@ const profileRoutes = require('./routes/profileRoutes');
 // Initialize app
 const app = express();
 
-// Connect to Database
-connectDB();
-
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -44,10 +41,19 @@ app.get('*', (req, res) => {
 // Centralized Error Handler
 app.use(errorHandler);
 
-// Port setup
-const PORT = process.env.PORT || 3000;
+// Start only after the database is ready; otherwise Mongoose buffers auth queries
+// and the client receives a misleading users.findOne() timeout.
+const startServer = async () => {
+  await connectDB();
 
-app.listen(PORT, () => {
-  console.log(`Server running in production-ready mode on port ${PORT}`);
-  console.log(`Open http://localhost:${PORT} in your web browser`);
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running in production-ready mode on port ${PORT}`);
+    console.log(`Open http://localhost:${PORT} in your web browser`);
+  });
+};
+
+startServer().catch((error) => {
+  console.error(`Server startup failed: ${error.message}`);
+  process.exit(1);
 });

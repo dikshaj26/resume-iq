@@ -1,19 +1,23 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
+  const connUri = process.env.MONGODB_URI;
+
+  if (!connUri) {
+    throw new Error('MONGODB_URI is not configured');
+  }
+
   try {
-    const connUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/resume-iq';
-    
-    // Connect with options to handle connection issues gracefully
     const conn = await mongoose.connect(connUri, {
-      serverSelectionTimeoutMS: 5000 // Keep selection timeout to 5s instead of 30s
+      serverSelectionTimeoutMS: 10000
     });
 
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.error(`MongoDB Connection Error: ${error.message}`);
-    console.log('Ensure MongoDB is installed and running locally, or configure MONGODB_URI in your .env file.');
-    // Do not crash the application in development, let it run so user can see UI
+    throw new Error(
+      'Unable to connect to MongoDB. Set MONGODB_URI and allow the deployment IP in MongoDB Atlas.'
+    );
   }
 };
 
